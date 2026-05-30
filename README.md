@@ -1,2 +1,0 @@
-# Amara-Shanti
-website 

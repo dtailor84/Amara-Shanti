@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amara Shanti — Ancient Insights for Modern Lives</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-pale: #F7F0DC;
+    --lavender: #9B8BB4;
+    --lavender-light: #C4B8D8;
+    --lavender-pale: #EDE8F3;
+    --plum: #3D2B4E;
+    --plum-mid: #6B5080;
+    --white: #FFFFFF;
+    --soft-white: #F7F4F9;
+    --lilac-bg: #F0EBF8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--soft-white);
+    color: var(--plum);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(247,244,249,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 500; letter-spacing: .06em;
+    color: var(--lavender); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .7rem; font-weight: 400; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--plum);
+    text-decoration: none; transition: color .25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .68rem; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold);
+    border: 0.5px solid var(--gold); padding: .55rem 1.4rem;
+    text-decoration: none; transition: all .25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, #ede8f3 0%, #f7f4f9 60%, #fff 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-orb-1 { width: 600px; height: 600px; top: -100px; left: -150px; }
+  .hero-orb-2 { width: 400px; height: 400px; bottom: 0; right: -100px; }
+
+  .hero-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp .8s .2s forwards;
+  }
+  .hero-lotus {
+    width: 90px; margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp .8s .1s forwards;
+    filter: drop-shadow(0 4px 16px rgba(201,168,76,0.25));
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 300; line-height: 1.05; letter-spacing: .04em;
+    color: var(--lavender);
+    opacity: 0; animation: fadeUp .9s .3s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--plum); }
+  .hero-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--plum-mid); margin-top: 1.2rem;
+    opacity: 0; animation: fadeUp .8s .5s forwards;
+  }
+  .hero-desc {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+    color: var(--plum); max-width: 520px; margin: 1.8rem auto 0;
+    opacity: 0; animation: fadeUp .8s .6s forwards;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; justify-content: center;
+    opacity: 0; animation: fadeUp .8s .75s forwards;
+  }
+  .btn-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+    padding: .9rem 2.2rem; background: var(--gold); color: var(--white);
+    text-decoration: none; transition: all .3s;
+  }
+  .btn-primary:hover { background: var(--plum); }
+  .btn-outline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .7rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase;
+    padding: .9rem 2.2rem; border: 0.5px solid var(--lavender); color: var(--lavender);
+    text-decoration: none; transition: all .3s;
+  }
+  .btn-outline:hover { background: var(--lavender); color: var(--white); }
+  .hero-services-row {
+    display: flex; gap: 2rem; margin-top: 3.5rem; flex-wrap: wrap; justify-content: center;
+    opacity: 0; animation: fadeUp .8s .9s forwards;
+  }
+  .hero-service-pill {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .6rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--plum-mid); display: flex; align-items: center; gap: .5rem;
+  }
+  .hero-service-pill::before {
+    content: ''; width: 18px; height: 0.5px; background: var(--gold);
+  }
+  .gold-line {
+    width: 40px; height: 1px; background: var(--gold);
+    margin: 2rem auto 0;
+    opacity: 0; animation: fadeUp .6s .85s forwards;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .8rem; display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300;
+    line-height: 1.15; color: var(--lavender);
+  }
+  .section-title em { font-style: italic; color: var(--plum); }
+  .gold-divider {
+    width: 40px; height: 1px; background: var(--gold); margin: 1.5rem 0;
+  }
+  .gold-divider.center { margin: 1.5rem auto; }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-placeholder {
+    width: 100%; aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--lavender-pale) 0%, var(--lilac-bg) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--lavender-light); letter-spacing: .1em;
+  }
+  .about-img-frame {
+    position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px;
+    border: 0.5px solid var(--gold-light); z-index: -1;
+  }
+  .about-text p {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.9;
+    color: var(--plum); margin-bottom: 1.2rem;
+  }
+  .about-values {
+    display: flex; flex-direction: column; gap: .6rem; margin-top: 1.8rem;
+  }
+  .about-value {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--plum-mid); display: flex; align-items: center; gap: .75rem;
+  }
+  .about-value::before {
+    content: ''; width: 24px; height: 0.5px; background: var(--gold); flex-shrink: 0;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--soft-white); }
+  .services-intro { max-width: 560px; margin-bottom: 3.5rem; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5px;
+    background: var(--gold-light);
+  }
+  .service-card {
+    background: var(--white); padding: 2.5rem 2rem;
+    transition: background .3s;
+    cursor: default;
+  }
+  .service-card:hover { background: var(--lavender-pale); }
+  .service-icon {
+    width: 36px; height: 36px; margin-bottom: 1.2rem;
+    color: var(--gold);
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--plum); margin-bottom: .5rem;
+  }
+  .service-desc {
+    font-size: .9rem; font-weight: 300; line-height: 1.8; color: var(--plum-mid);
+  }
+  .service-detail {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--gold); margin-top: 1.2rem; display: inline-block;
+    border-bottom: 0.5px solid var(--gold-light); padding-bottom: 2px;
+    transition: border-color .2s;
+  }
+  .service-card:hover .service-detail { border-color: var(--gold); }
+
+  /* ── BOOKING ── */
+  #book { background: var(--lilac-bg); }
+  .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .book-info p { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--plum); margin-bottom: 1rem; }
+  .session-types { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.5rem; }
+  .session-type {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.6);
+    border: 0.5px solid rgba(201,168,76,0.2);
+  }
+  .session-type-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--plum);
+  }
+  .session-type-price {
+    font-family: 'Montserrat', sans-serif; font-size: .75rem; color: var(--gold); font-weight: 400;
+  }
+  .book-form { background: var(--white); padding: 2.5rem; }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300;
+    color: var(--lavender); margin-bottom: 1.5rem;
+  }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block; font-family: 'Montserrat', sans-serif;
+    font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--plum-mid); margin-bottom: .4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: .75rem 1rem;
+    border: 0.5px solid var(--lavender-light);
+    background: var(--soft-white);
+    font-family: 'Lato', sans-serif; font-size: .9rem; color: var(--plum);
+    outline: none; transition: border-color .2s;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ── SHOP ── */
+  #shop { background: var(--white); }
+  .shop-intro { max-width: 500px; margin-bottom: 3rem; }
+  .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+  .shop-card { cursor: pointer; }
+  .shop-img {
+    width: 100%; aspect-ratio: 1;
+    background: var(--lavender-pale);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; transition: background .3s; position: relative; overflow: hidden;
+  }
+  .shop-card:hover .shop-img { background: var(--gold-pale); }
+  .shop-img-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .9rem; color: var(--lavender-light); letter-spacing: .08em;
+  }
+  .shop-badge {
+    position: absolute; top: 12px; right: 12px;
+    font-family: 'Montserrat', sans-serif; font-size: .55rem; letter-spacing: .1em;
+    text-transform: uppercase; padding: .3rem .6rem;
+    background: var(--gold); color: var(--white);
+  }
+  .shop-item-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--plum);
+    margin-bottom: .25rem;
+  }
+  .shop-item-price {
+    font-family: 'Montserrat', sans-serif; font-size: .75rem; color: var(--gold);
+  }
+  .shop-item-type {
+    font-family: 'Montserrat', sans-serif; font-size: .6rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--lavender-light); margin-top: .2rem;
+  }
+
+  /* ── MEMBERSHIP ── */
+  #membership { background: var(--plum); padding: 5rem 2rem; }
+  #membership .section-title { color: var(--lavender-light); }
+  #membership .section-title em { color: var(--gold-light); }
+  #membership .section-tag { color: var(--gold); }
+  .membership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .membership-card {
+    border: 0.5px solid rgba(201,168,76,0.3); padding: 2.5rem 2rem;
+    position: relative; transition: border-color .3s;
+  }
+  .membership-card:hover { border-color: var(--gold); }
+  .membership-card.featured { border-color: var(--gold); }
+  .membership-featured-tag {
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    font-family: 'Montserrat', sans-serif; font-size: .55rem; letter-spacing: .14em;
+    text-transform: uppercase; background: var(--gold); color: var(--white);
+    padding: .3rem 1rem;
+  }
+  .membership-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300;
+    color: var(--lavender-light); margin-bottom: .5rem;
+  }
+  .membership-price {
+    font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 300;
+    color: var(--gold); margin-bottom: .25rem;
+  }
+  .membership-price span { font-size: .75rem; color: var(--lavender-light); font-weight: 300; }
+  .membership-desc {
+    font-size: .9rem; font-weight: 300; line-height: 1.8; color: rgba(196,184,216,0.8);
+    margin-bottom: 1.5rem;
+  }
+  .membership-features { list-style: none; margin-bottom: 1.8rem; }
+  .membership-features li {
+    font-family: 'Montserrat', sans-serif; font-size: .65rem; letter-spacing: .08em;
+    color: var(--lavender-light); padding: .4rem 0;
+    border-bottom: 0.5px solid rgba(201,168,76,0.1);
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .membership-features li::before { content: '✦'; color: var(--gold); font-size: .5rem; }
+  .btn-gold {
+    font-family: 'Montserrat', sans-serif; font-size: .68rem; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase;
+    padding: .85rem 2rem; background: var(--gold); color: var(--white);
+    border: none; cursor: pointer; width: 100%; transition: background .3s;
+  }
+  .btn-gold:hover { background: var(--gold-light); color: var(--plum); }
+  .btn-gold-outline {
+    font-family: 'Montserrat', sans-serif; font-size: .68rem; font-weight: 400;
+    letter-spacing: .14em; text-transform: uppercase;
+    padding: .85rem 2rem; background: transparent; color: var(--gold);
+    border: 0.5px solid var(--gold); cursor: pointer; width: 100%; transition: all .3s;
+  }
+  .btn-gold-outline:hover { background: var(--gold); color: var(--white); }
+
+  /* ── NEWSLETTER ── */
+  .newsletter-strip {
+    background: var(--gold-pale); padding: 3.5rem 2rem; text-align: center;
+  }
+  .newsletter-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300;
+    color: var(--plum); margin-bottom: .5rem;
+  }
+  .newsletter-sub {
+    font-family: 'Montserrat', sans-serif; font-size: .7rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--plum-mid); margin-bottom: 1.8rem;
+  }
+  .newsletter-form { display: flex; gap: 0; max-width: 440px; margin: 0 auto; }
+  .newsletter-form input {
+    flex: 1; padding: .85rem 1.2rem; border: 0.5px solid var(--gold);
+    background: var(--white); font-family: 'Lato', sans-serif; font-size: .9rem;
+    color: var(--plum); outline: none;
+  }
+  .newsletter-form button {
+    padding: .85rem 1.6rem; background: var(--gold); color: var(--white);
+    border: none; font-family: 'Montserrat', sans-serif; font-size: .65rem;
+    letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: background .3s;
+  }
+  .newsletter-form button:hover { background: var(--plum); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--soft-white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-info { }
+  .contact-info p { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--plum); margin-bottom: 1.5rem; }
+  .contact-details { display: flex; flex-direction: column; gap: .9rem; margin-top: 1.5rem; }
+  .contact-detail {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'Montserrat', sans-serif; font-size: .72rem; letter-spacing: .06em;
+    color: var(--plum-mid);
+  }
+  .contact-detail-icon {
+    width: 32px; height: 32px; border: 0.5px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: .9rem; flex-shrink: 0;
+  }
+  .contact-form { background: var(--white); padding: 2.5rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--plum); padding: 3rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300;
+    color: var(--lavender-light); letter-spacing: .06em;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a {
+    font-family: 'Montserrat', sans-serif; font-size: .62rem; letter-spacing: .12em;
+    text-transform: uppercase; color: rgba(196,184,216,0.6); text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-family: 'Montserrat', sans-serif; font-size: .6rem; letter-spacing: .08em;
+    color: rgba(196,184,216,0.4);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .about-grid, .book-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; padding: 2rem; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+  /* lotus SVG inline */
+  .lotus-svg { width: 80px; height: 80px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Amara <span>Shanti</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#book" class="nav-cta">Book a Session</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <svg class="hero-lotus" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 70 C50 70 30 55 25 40 C20 25 30 15 50 10 C70 15 80 25 75 40 C70 55 50 70 50 70Z" stroke="#C9A84C" stroke-width="1" fill="none"/>
+    <path d="M50 70 C50 70 20 60 12 45 C5 30 15 15 35 12 C42 18 46 28 50 42" stroke="#C9A84C" stroke-width="1" fill="none"/>
+    <path d="M50 70 C50 70 80 60 88 45 C95 30 85 15 65 12 C58 18 54 28 50 42" stroke="#C9A84C" stroke-width="1" fill="none"/>
+    <path d="M50 70 C50 70 10 65 5 48 C0 32 12 18 30 16" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.6"/>
+    <path d="M50 70 C50 70 90 65 95 48 C100 32 88 18 70 16" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.6"/>
+    <circle cx="50" cy="38" r="5" stroke="#C9A84C" stroke-width="1" fill="none"/>
+    <circle cx="50" cy="38" r="2" fill="#C9A84C" opacity="0.5"/>
+    <path d="M50 70 L50 78" stroke="#C9A84C" stroke-width="1"/>
+    <path d="M44 76 Q50 72 56 76" stroke="#C9A84C" stroke-width="0.8" fill="none"/>
+  </svg>
+
+  <p class="hero-tag">Ancient Insights for Modern Lives</p>
+  <h1 class="hero-title">Amara<br><em>Shanti</em></h1>
+  <p class="hero-sub">Akashic Readings &nbsp;·&nbsp; Reiki &nbsp;·&nbsp; Yoga &nbsp;·&nbsp; Meditation &nbsp;·&nbsp; Sound Healing</p>
+  <p class="hero-desc">Step into a sacred space where ancient wisdom meets modern healing. Begin your journey back to wholeness.</p>
+  <div class="hero-btns">
+    <a href="#book" class="btn-primary">Book a Session</a>
+    <a href="#services" class="btn-outline">Explore Services</a>
+  </div>
+  <div class="gold-line"></div>
+  <div class="hero-services-row">
+    <span class="hero-service-pill">Akashic Readings</span>
+    <span class="hero-service-pill">Reiki Healing</span>
+    <span class="hero-service-pill">Sound Therapy</span>
+    <span class="hero-service-pill">Guided Meditation</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-placeholder">[ Your photo here ]</div>
+        <div class="about-img-frame"></div>
+      </div>
+      <div class="about-text reveal">
+        <span class="section-tag">About me</span>
+        <h2 class="section-title">A guide on your<br><em>path to wholeness</em></h2>
+        <div class="gold-divider"></div>
+        <p>I am a dedicated healer, teacher, and guide who has spent over a decade studying ancient traditions from around the world. My path led me through the sacred temples of India, the meditation halls of Southeast Asia, and the healing circles of indigenous wisdom keepers.</p>
+        <p>I believe that true healing happens when we reconnect with the deeper intelligence of our soul — and I'm here to help you find that path.</p>
+        <div class="about-values">
+          <span class="about-value">Certified Reiki Master Teacher</span>
+          <span class="about-value">Akashic Records Practitioner</span>
+          <span class="about-value">500hr Yoga Alliance Teacher</span>
+          <span class="about-value">Sound Healing Facilitator</span>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="#book" class="btn-primary">Work with me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-intro reveal">
+      <span class="section-tag">What I offer</span>
+      <h2 class="section-title">Sacred services for<br><em>mind, body & soul</em></h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="18" cy="18" r="14"/>
+          <circle cx="18" cy="18" r="6"/>
+          <line x1="18" y1="4" x2="18" y2="10"/>
+          <line x1="18" y1="26" x2="18" y2="32"/>
+          <line x1="4" y1="18" x2="10" y2="18"/>
+          <line x1="26" y1="18" x2="32" y2="18"/>
+        </svg>
+        <div class="service-name">Akashic Readings</div>
+        <div class="service-desc">Access the energetic records of your soul's journey. Gain clarity on your life purpose, relationships, and the patterns shaping your reality.</div>
+        <a href="#book" class="service-detail">Book a reading</a>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M18 4 C18 4 28 10 28 20 C28 26 24 30 18 32 C12 30 8 26 8 20 C8 10 18 4 18 4Z"/>
+          <path d="M18 14 L18 28"/>
+          <path d="M12 18 L24 18"/>
+        </svg>
+        <div class="service-name">Reiki Healing</div>
+        <div class="service-desc">Experience the gentle power of universal life-force energy. Deep relaxation, stress relief, and restoration of energetic balance and flow.</div>
+        <a href="#book" class="service-detail">Book a session</a>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M6 28 Q10 16 18 14 Q26 12 30 8"/>
+          <path d="M6 24 Q12 18 18 18 Q24 18 30 14"/>
+          <circle cx="18" cy="10" r="3"/>
+        </svg>
+        <div class="service-name">Yoga</div>
+        <div class="service-desc">Private and group sessions blending traditional Hatha, Yin, and restorative practices to awaken body awareness and inner stillness.</div>
+        <a href="#book" class="service-detail">View classes</a>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="18" cy="16" r="8"/>
+          <path d="M10 28 Q14 24 18 24 Q22 24 26 28"/>
+          <path d="M18 8 L18 4"/>
+          <path d="M14 9 L12 6"/>
+          <path d="M22 9 L24 6"/>
+        </svg>
+        <div class="service-name">Meditation</div>
+        <div class="service-desc">Guided journeys into stillness using breathwork, visualization, and mantra. One-on-one sessions tailored to your personal practice.</div>
+        <a href="#book" class="service-detail">Book a session</a>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1">
+          <ellipse cx="18" cy="26" rx="12" ry="3"/>
+          <path d="M10 26 Q8 18 12 12 Q16 8 18 8 Q20 8 24 12 Q28 18 26 26"/>
+          <path d="M14 20 Q18 16 22 20"/>
+        </svg>
+        <div class="service-name">Sound Healing</div>
+        <div class="service-desc">Immersive sound journeys with Tibetan singing bowls, crystal bowls, and sacred instruments to release deep tension and restore harmony.</div>
+        <a href="#book" class="service-detail">Book a journey</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book">
+  <div class="section-inner">
+    <div class="book-grid">
+      <div class="book-info reveal">
+        <span class="section-tag">Book a session</span>
+        <h2 class="section-title">Begin your<br><em>healing journey</em></h2>
+        <div class="gold-divider"></div>
+        <p>Each session is lovingly held in a sacred container. Please reach out to discuss what feels right for you — all are welcome, wherever you are on your path.</p>
+        <div class="session-types">
+          <div class="session-type">
+            <span class="session-type-name">Akashic Reading (60 min)</span>
+            <span class="session-type-price">$120</span>
+          </div>
+          <div class="session-type">
+            <span class="session-type-name">Reiki Session (75 min)</span>
+            <span class="session-type-price">$95</span>
+          </div>
+          <div class="session-type">
+            <span class="session-type-name">Private Yoga (60 min)</span>
+            <span class="session-type-price">$85</span>
+          </div>
+          <div class="session-type">
+            <span class="session-type-name">Sound Healing (90 min)</span>
+            <span class="session-type-price">$110</span>
+          </div>
+          <div class="session-type">
+            <span class="session-type-name">Meditation Session (45 min)</span>
+            <span class="session-type-price">$75</span>
+          </div>
+        </div>
+      </div>
+      <div class="book-form reveal">
+        <div class="form-title">Request a Booking</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Last name</label>
+            <input type="text" placeholder="Your surname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service</label>
+          <select>
+            <option>Akashic Reading</option>
+            <option>Reiki Healing</option>
+            <option>Private Yoga</option>
+            <option>Meditation Session</option>
+            <option>Sound Healing</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred date</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Message (optional)</label>
+          <textarea placeholder="Share anything you'd like me to know before our session…"></textarea>
+        </div>
+        <button class="btn-gold" onclick="alert('Thank you! I will be in touch within 24 hours.')">Send Booking Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="section-inner">
+    <div class="shop-intro reveal">
+      <span class="section-tag">The shop</span>
+      <h2 class="section-title">Sacred tools &<br><em>digital offerings</em></h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="shop-grid reveal">
+      <div class="shop-card">
+        <div class="shop-img">
+          <span class="shop-img-label">[ Product image ]</span>
+          <span class="shop-badge">Digital</span>
+        </div>
+        <div class="shop-item-name">Soul Purpose Meditation</div>
+        <div class="shop-item-price">$18</div>
+        <div class="shop-item-type">Guided Audio · 45 min</div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-img">
+          <span class="shop-img-label">[ Product image ]</span>
+        </div>
+        <div class="shop-item-name">Tibetan Singing Bowl</div>
+        <div class="shop-item-price">$85</div>
+        <div class="shop-item-type">Physical · Hand-selected</div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-img">
+          <span class="shop-img-label">[ Product image ]</span>
+          <span class="shop-badge">New</span>
+        </div>
+        <div class="shop-item-name">Akashic Journal</div>
+        <div class="shop-item-price">$32</div>
+        <div class="shop-item-type">Physical · Guided prompts</div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-img">
+          <span class="shop-img-label">[ Product image ]</span>
+          <span class="shop-badge">Digital</span>
+        </div>
+        <div class="shop-item-name">Chakra Healing Series</div>
+        <div class="shop-item-price">$44</div>
+        <div class="shop-item-type">7-part Video Course</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#" class="btn-outline">View all products</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section id="membership">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <span class="section-tag">Membership</span>
+      <h2 class="section-title" style="color:#C4B8D8">Join the<br><em style="color:#E8D5A3">inner circle</em></h2>
+      <div class="gold-divider center"></div>
+      <p style="font-size:1rem;font-weight:300;line-height:1.9;color:rgba(196,184,216,0.8);max-width:480px;margin:0 auto">A monthly sanctuary for those called to go deeper — exclusive content, live sessions, and a sacred community.</p>
+    </div>
+    <div class="membership-grid reveal">
+      <div class="membership-card">
+        <div class="membership-name">Seeker</div>
+        <div class="membership-price">$22 <span>/ month</span></div>
+        <div class="membership-desc">Perfect for those beginning their journey into ancient wisdom and healing practices.</div>
+        <ul class="membership-features">
+          <li>2 live group meditations / month</li>
+          <li>Monthly Akashic wisdom newsletter</li>
+          <li>Access to members' resource library</li>
+          <li>Private community space</li>
+        </ul>
+        <button class="btn-gold-outline">Join Seeker</button>
+      </div>
+      <div class="membership-card featured">
+        <div class="membership-featured-tag">Most popular</div>
+        <div class="membership-name">Devotee</div>
+        <div class="membership-price">$55 <span>/ month</span></div>
+        <div class="membership-desc">For the dedicated seeker ready to accelerate their healing and spiritual growth.</div>
+        <ul class="membership-features">
+          <li>Everything in Seeker</li>
+          <li>4 live group sessions / month</li>
+          <li>1 private 30-min check-in / month</li>
+          <li>Exclusive courses & workshops</li>
+          <li>15% off all bookings & shop</li>
+        </ul>
+        <button class="btn-gold">Join Devotee</button>
+      </div>
+      <div class="membership-card">
+        <div class="membership-name">Initiate</div>
+        <div class="membership-price">$120 <span>/ month</span></div>
+        <div class="membership-desc">Deep immersive support for those committed to transformational healing work.</div>
+        <ul class="membership-features">
+          <li>Everything in Devotee</li>
+          <li>1 private 60-min session / month</li>
+          <li>Priority booking & scheduling</li>
+          <li>Personalised healing plan</li>
+          <li>Direct WhatsApp support</li>
+        </ul>
+        <button class="btn-gold-outline">Join Initiate</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-strip">
+  <h3 class="newsletter-title">Receive sacred wisdom in your inbox</h3>
+  <p class="newsletter-sub">Moon rituals · healing insights · early access to new offerings</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com">
+    <button onclick="alert('Thank you for joining the circle!')">Join</button>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="section-tag">Get in touch</span>
+        <h2 class="section-title">Let's connect<br><em>with intention</em></h2>
+        <div class="gold-divider"></div>
+        <p>I'd love to hear from you. Whether you have a question about a service, want to explore working together, or simply need guidance on where to begin — reach out.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉</div>
+            hello@amarashanti.com
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">☏</div>
+            +1 (000) 000-0000
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">⊙</div>
+            Online &amp; In-person · Los Angeles, CA
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-title">Send a message</div>
+        <div class="form-group">
+          <label>Your name</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="How can I support you?" style="min-height:130px"></textarea>
+        </div>
+        <button class="btn-gold" onclick="alert('Message received — I\'ll be in touch soon.')">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Amara <span>Shanti</span></div>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Amara Shanti · All rights reserved</span>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
